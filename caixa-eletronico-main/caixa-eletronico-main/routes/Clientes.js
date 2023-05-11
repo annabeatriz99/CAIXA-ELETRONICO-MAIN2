@@ -51,16 +51,30 @@ router.delete("/clientes/:id", async (req, res) => {
     }
 })
 
-/*router.update("/clientes", async(req, res) =>{
+router.put("/clientes/:id", async(req, res) =>{
     try{
-        
-        const result = await Clientes.updateByClientes(Clientes)
+        const id = req.params.id
+        const result = await Clientes.updateByClientes(id, req.body)
         res.send(result)
     }
     catch(e){
         console.log(e)
         res.status(500).send({ error: true, message: e.toString() })
     }
-})*/
+})
+
+router.post("/clientes/depositoByClientes/:id", async (req, res) => {
+    try{
+        
+        const id = req.params.id
+        const result = await Clientes.depositoByClientes(id, req.body)
+        res.send(result)
+
+    }catch(e){
+        console.log(e)
+        res.status(500).send({ error : true, message: e.toString()})
+    }
+})
+
 
 module.exports = router

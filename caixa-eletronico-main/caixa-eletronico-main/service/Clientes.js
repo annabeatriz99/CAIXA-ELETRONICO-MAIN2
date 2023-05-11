@@ -24,16 +24,24 @@ const deleteById = async (id) => {
     return res.rows
 }
 
- /*const updateByClientes = async ({nome, idade, senha, numero_conta, cfp}) =>{
+ const updateByClientes = async (id,{nome, idade, senha, numero_conta, cpf}) =>{
     const con = await db.connect()
-    const res = await con.query (`update where clientes(nome, idade, senha, numero_conta, cpf) values ('${nome}, ${idade},${senha}, ${numero_conta}, ${cpf})`)
+    const res = await con.query (`update clientes
+    set nome = '${nome}', idade = ${idade}, senha = '${senha}', numero_conta = ${numero_conta}, cpf = ${cpf} where id = ${id}`)
     return res.rows
-}*/
+}
+
+const depositoByClientes = async (id,{saldo_em_real,nome, idade, senha, numero_conta, cpf}) =>{
+    const con = await db.connect()
+    const res = await con.query (`deposito clientes = ${saldo_em_real}, nome = '${nome}', idade = ${idade}, senha = '${senha}', numero_conta = ${numero_conta}, cpf = ${cpf}`)
+    return res.rows
+}
 
 module.exports = ({
     getClientes,
     getClientById,
     create,
     deleteById,
-    //updateByClientes
+    updateByClientes,
+    depositoByClientes
 })
