@@ -77,7 +77,7 @@ router.post("/clientes/depositoByClientes", async (req, res) => {
 
 router.post("/clientes/saqueByCliente", async (req, res) =>{
     try{
-        const result = await Clientes.saqueByClientes(req.body)
+        const result = await Clientes.saqueByCliente(req.body)
         res.send(result)
     }
     catch(e){
