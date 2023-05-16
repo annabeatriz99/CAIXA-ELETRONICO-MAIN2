@@ -1,3 +1,4 @@
+const { query } = require("express")
 const db = require("../db")
 
 const getClientes = async () => {
@@ -67,6 +68,35 @@ const saqueByCliente = async({saldo_em_real, numero_conta}) =>{
     return res.rows
 
 }
+const transferenciaByClientes = async ({saldo_em_real,numero_conta}) =>{
+   const con = await db.connect()
+   const clientes = await con.query(`select * from clientes where numero_conta = ${numero_conta}`)
+
+   if(clientes.rows.length === 0){
+    throw new Exception ("conta nao encontrada")
+   }
+   
+   const cliente = clientes.rows[0]
+
+   if(saldo_em_real < cliente.saldo_em_real){
+    throw new Exception ("saldo insuficiente")
+   }
+
+   const novo_saldo_origem = cliente.saldo_em_real - saldo_em_real
+   const resOrigem = await con.query(`update clientes set saldo_em_real = ${saldo_em_real} where numero_conta = ${numero_conta}`)
+   
+
+   if(saldo_em_real > cliente.saldo_em_real){
+    throw new Exception ("saldo suficiente")
+   }
+
+   const novo_saldo_destino = cliente.saldo_em_real + saldo_em_real
+   const resDestino = await con.query(`update clientes set saldo_em_real = ${saldo_em_real} where numero_conta = ${numero_conta}`)
+
+   return res.rows
+}
+
+
 
 
 module.exports = ({
@@ -76,5 +106,6 @@ module.exports = ({
     deleteById,
     updateByClientes,
     depositoByClientes,
-    saqueByCliente
+    saqueByCliente,
+    transferenciaByClientes
 })

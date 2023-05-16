@@ -85,6 +85,15 @@ router.post("/clientes/saqueByCliente", async (req, res) =>{
         res.status(500).send({ error : true, message: e.toString()})
     }
 })
+router.post("/clientes/transferenciaByClientes", async (req, res) =>{
+    try{
+      const result = await Clientes.transferenciaByClientes(req.body)
+        res.send(result)
+    }catch(e){
+        console.log(e)
+        res.status(500).send({ error : true, message: e.toString()})
+    }
+})
 
 
 module.exports = router
