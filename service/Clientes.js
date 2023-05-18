@@ -90,11 +90,18 @@ const transferenciaByClientes = async ({ saldo_em_real, conta_origem, conta_dest
     const resOrigem = await con.query(`UPDATE clientes SET saldo_em_real = ${novo_saldo_origem} WHERE numero_conta = ${conta_origem}`);
     const resDestino = await con.query(`UPDATE clientes SET saldo_em_real = ${novo_saldo_destino} WHERE numero_conta = ${conta_destino}`);
 
-    return res.rows
+    
 }
 
+const extratoByClientes = async ({numero_conta, tipo_transacao, valor}) =>{
+  const con = await db.connect();
+  const extrato = await con.query (`select * from extrato where numero_conta = ${numero_conta}`)
 
-
+  if(extrato.rows.length === 0){
+    throw new Exception ("sem informacoes")
+}
+return extrato.rows;
+}
 
 module.exports = ({
     getClientes,
@@ -104,5 +111,7 @@ module.exports = ({
     updateByClientes,
     depositoByClientes,
     saqueByCliente,
-    transferenciaByClientes
+    transferenciaByClientes,
+    extratoByClientes
+
 })

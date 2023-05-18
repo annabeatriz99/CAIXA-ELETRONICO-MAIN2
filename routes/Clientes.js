@@ -95,5 +95,15 @@ router.post("/clientes/transferenciaByClientes", async (req, res) =>{
     }
 })
 
+router.get ("/extratoByNumeroConta/:id", async (reg, res) => {
+    try{
+    const result = await clientes.extratoByclientes ({ numero_conta : req.params.id })
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
 
 module.exports = router
