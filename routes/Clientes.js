@@ -105,4 +105,93 @@ router.get ("/extratoByNumeroConta/:id", async (req, res) => {
       }
   })
 
+  router.post ("/clientes/somarNumeros", async(req, res) =>{
+    try{
+        const result = await Clientes.somarNumeros(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.post ("/clientes/maiorNumero", async(req, res) =>{
+    try{
+        const result = await Clientes.maiorNumero(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.post ("/clientes/vogaisMaiusculas", async(req, res) =>{
+    try{
+        const result = await Clientes.vogaisMaiusculas(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+  router.post ("/clientes/filtrarPalavras", async(req, res) =>{
+    try{
+        const result = await Clientes.filtrarPalavras(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.post ("/clientes/somaNumerosPares", async(req, res) =>{
+    try{
+        const result = await Clientes.somaNumerosPares(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+  router.post ("/clientes/inverterTexto", async(req, res) =>{
+    try{
+        const result = await Clientes.inverterTexto(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.get ("/clientes/numerosUnicos", async(req, res) =>{
+    try{
+        const result = await Clientes.numerosUnicos(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.get ("/clientes/contarVogais", async(req, res) =>{
+    try{
+        const result = await Clientes.contarVogais(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+  router.put ("/clientes/ordenarPalavras", async(req, res) =>{
+    try{
+        const result = await Clientes.ordenarPalavras(req.body)
+          res.send(result)
+      }catch(e){
+          console.log(e)
+          res.status(500).send({ error : true, message: e.toString()})
+      }
+  })
+
+
 module.exports = router
