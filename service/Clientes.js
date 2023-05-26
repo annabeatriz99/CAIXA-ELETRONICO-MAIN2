@@ -119,6 +119,126 @@ const extratoByClientes = async ({ numero_conta, tipo_transacao, valor }) => {
     return extrato.rows;
 }
 
+function somarNumeros(num1, num2) {
+    return num1 + num2
+  }
+
+  function maiorNumero(num1, num2) {
+    let maior = num1; // num1 o maior número inicialmente
+  
+    if (num2 > maior) {
+      maior = num2; // o maior número se num2 for maior
+    }
+
+    let resultado = maiorNumero(10, 5)
+    console.log(resultado)
+  
+    return maior
+  }
+
+  function vogaisMaiusculas(vogais) {
+    const vogais = ['a', 'e', 'i', 'o', 'u']
+    let resultado = ''
+  
+    for (let i = 0; i < string.length; i++) {
+      const char = string[i]
+  
+      if (vogais.includes(char.toLowerCase())) {
+        resultado += char.toUpperCase() // Converte vogal para maiúscula
+      } else {
+        resultado += char // mantem os caracteres nao vogais
+      }
+    }
+  
+    return resultado;
+  }
+  function filtrarPalavras(palavras) {
+    let novaPalavra = []
+  
+    for (let i = 0; i < palavras.length; i++) {
+      if (palavras[i].length > 5) {
+        novaPalavra.push(palavras[i])
+      }
+    }
+  
+    console.log(novaPalavra)
+    return novaPalavra
+  }
+  
+  const palavras = ['apartamento', 'moto', 'bigorna', 'livro', 'caneca']
+  const palavrasFiltradas = filtrarPalavras(palavras);
+  console.log(palavrasFiltradas)
+
+  function somaNumerosPares(numeros) {
+    let soma = 0
+    for (let i = 0; i < arr.length; i++) {
+      if (numeros[i] % 2 === 0) { // verifica se o numero é par
+        soma += arr[i]
+      }
+      const numeros = [1, 2, 3, 4, 5, 6]
+      const resultado = somaNumerosPares(numeros)
+      console.log(resultado)
+    }
+    return soma
+  }
+
+  function inverterTexto(texto) {
+    let resultado = ""
+    for (let i = texto.length - 1; i >= 0; i--) {
+      resultado += texto[i]
+    }
+    console.log(resultado)
+  
+    return resultado
+  }
+  
+  const entrada = "Olá, mundo!"
+  const saida = inverterTexto(entrada)
+  console.log(saida)
+
+
+  function numerosUnicos(numeros) {
+    const numerosUnicos = []
+    
+    for (let i = 0; i < numeros.length; i++) {
+      if (numerosUnicos.indexOf(numeros[i]) === -1) {
+        numerosUnicos.push(numeros[i]);
+      }
+      const numeros = [1, 2, 3, 4, 3, 2, 5]
+      const numerosUnicos = numerosUnicos(numeros)
+      console.log(numerosUnicos)
+    }
+    
+    return numerosUnicos
+  }
+
+  function contarVogais(letras) {
+    const vogais = ['a', 'e', 'i', 'o', 'u']
+    let contador = 0;
+    
+    for (let i = 0; i < letras.length; i++) {
+      const caractere = letras[i].toLowerCase()
+
+      if (vogais.includes(caractere)) {
+        contador++
+      }
+    }
+    
+    return contador;
+  }
+  function ordenarPalavras(frutas) {
+    const frutasOrdenadas = frutas.sort()
+
+    console.log(frutasOrdenadas)
+    console.log(frutas)
+    return frutasOrdenadas
+}
+
+const frutas = ["pera", "banana", "abacate", "laranja"]
+const frutasOrdenadas = ordenarPalavras(frutas)
+console.log(frutasOrdenadas)
+console.log(frutas)
+  
 module.exports = ({
     getClientes,
     getClientById,
@@ -128,6 +248,14 @@ module.exports = ({
     depositoByClientes,
     saqueByCliente,
     transferenciaByClientes,
-    extratoByClientes
-
+    extratoByClientes,
+    somarNumeros,
+    maiorNumero,
+    vogaisMaiusculas,
+    filtrarPalavras,
+    somaNumerosPares,
+    inverterTexto,
+    numerosUnicos,
+    contarVogais,
+    ordenarPalavras
 })
