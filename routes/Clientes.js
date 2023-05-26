@@ -173,9 +173,9 @@ router.get ("/extratoByNumeroConta/:id", async (req, res) => {
       }
   })
 
-  router.get ("/clientes/contarVogais", async(req, res) =>{
+  router.get ("/clientes/contarLetras", async(req, res) =>{
     try{
-        const result = await Clientes.contarVogais(req.body)
+        const result = await Clientes.contarLetras(req.body)
           res.send(result)
       }catch(e){
           console.log(e)
